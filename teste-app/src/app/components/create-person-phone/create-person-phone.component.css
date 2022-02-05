@@ -1,0 +1,8 @@
+.div-button {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+}
+.div-button button {
+  width: 200px;
+}

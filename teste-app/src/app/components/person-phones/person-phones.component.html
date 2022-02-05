@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Business Entity Id</th>
+        <th>Phone Number</th>
+        <th>Phone Type</th>
+        <th>Person</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pp of personPhones">
+        <td>{{pp.businessEntityID}}</td>
+        <td>{{pp.phoneNumber}}</td>
+        <td>{{pp.phoneNumberType}}</td>
+        <td>{{pp.name}}</td>
+        <td class="td-actions">
+          <button type="button" class="btn btn-primary" (click)="update(pp)">Update</button>
+          <button type="button" class="btn btn-danger" (click)="delete(pp.businessEntityID)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
