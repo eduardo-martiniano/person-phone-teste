@@ -18,7 +18,9 @@ export class PersonPhonesComponent implements OnInit {
   }
 
   delete(id: number){
-    console.log("Delete");
+    this.personPhoneService.delete(id).then(
+      () => this.personPhoneService.getPersonPhones()
+      .then(response => this.personPhones = response));
   }
 
   update(personPhone: any){

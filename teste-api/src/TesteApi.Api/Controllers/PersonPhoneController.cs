@@ -27,7 +27,8 @@ namespace TesteApi.Api.Controllers
         [HttpGet, Route("{id}")]
         public async Task<IActionResult> Get([FromRoute] int id)
         {
-            return Ok(await _personPhoneService.Get(id));
+            var personPhone = await _personPhoneService.Get(id);
+            return Ok(new PersonPhoneModel(personPhone));
         }
 
         [HttpPost, Route("")]

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CreatePersonPhoneModel } from '../models/create-person-phone.model';
 import { PersonPhoneModel } from '../models/person-phone.model';
+import { UpdatePersonPhoneModel } from '../models/update-person-phone.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,16 @@ export class PersonPhoneService {
   create(personPhone: CreatePersonPhoneModel): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.post<any>(`${this.api_url}`, personPhone).subscribe(
+        result => {
+          resolve(result);
+        },
+        error => reject(error))
+    });
+  }
+
+  update(personPhone: UpdatePersonPhoneModel): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.put<any>(`${this.api_url}/${personPhone.businessEntityID}`, personPhone).subscribe(
         result => {
           resolve(result);
         },

@@ -47,6 +47,7 @@ namespace TesteApi.Infra.Repositories
 
         public async Task Update(int id, PersonPhone personPhone)
         {
+            personPhone.BusinessEntityID = id;
             _context.Entry(await Get(id)).CurrentValues.SetValues(personPhone);
             await _context.SaveChangesAsync();
         }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreatePersonPhoneModel } from 'src/app/models/create-person-phone.model';
+import { UpdatePersonPhoneModel } from 'src/app/models/update-person-phone.model';
 import { PersonPhoneService } from 'src/app/services/person-phone.service';
 
 @Component({
@@ -29,9 +30,11 @@ export class CreatePersonPhoneComponent implements OnInit {
   }
 
   update() {
-    console.log("update");
-    this.initializeCreate();
-    this.router.navigate(['']);
+    this.personPhoneService.update(this.form.value as UpdatePersonPhoneModel).then(() =>
+    {
+      this.initializeCreate();
+      this.router.navigate(['']);
+    });
   }
 
   initializeForm(){
@@ -47,6 +50,7 @@ export class CreatePersonPhoneComponent implements OnInit {
 
   initializeUpdate(personPhone: any){
     this.form = this.fb.group({
+      businessEntityID: [personPhone.businessEntityID, [Validators.required]],
       phoneNumber: [personPhone.phoneNumber, [Validators.required]],
       phoneNumberTypeID: [personPhone.phoneNumberTypeID, [Validators.required]],
     });
