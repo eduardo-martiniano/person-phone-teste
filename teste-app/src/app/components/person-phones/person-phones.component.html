@@ -5,7 +5,6 @@
         <th>Business Entity Id</th>
         <th>Phone Number</th>
         <th>Phone Type</th>
-        <th>Person</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -13,8 +12,7 @@
       <tr *ngFor="let pp of personPhones">
         <td>{{pp.businessEntityID}}</td>
         <td>{{pp.phoneNumber}}</td>
-        <td>{{pp.phoneNumberType}}</td>
-        <td>{{pp.name}}</td>
+        <td>{{pp.phoneNumberTypeName}}</td>
         <td class="td-actions">
           <button type="button" class="btn btn-primary" (click)="update(pp)">Update</button>
           <button type="button" class="btn btn-danger" (click)="delete(pp.businessEntityID)">Delete</button>

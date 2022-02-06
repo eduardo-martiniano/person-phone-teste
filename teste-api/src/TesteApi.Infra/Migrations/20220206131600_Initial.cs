@@ -44,6 +44,15 @@ namespace TesteApi.Infra.Migrations
                 name: "IX_PersonPhones_PhoneNumberTypeID",
                 table: "PersonPhones",
                 column: "PhoneNumberTypeID");
+
+            migrationBuilder.InsertData(
+            table: "PhoneNumberTypes",
+            columns: new[] { "Name" },
+            values: new object[,]
+            {
+                { "Cellphone" },
+                { "Local phone" }
+            });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

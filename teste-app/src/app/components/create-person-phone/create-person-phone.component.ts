@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CreatePersonPhoneModel } from 'src/app/models/create-person-phone.model';
+import { PersonPhoneService } from 'src/app/services/person-phone.service';
 
 @Component({
   selector: 'app-create-person-phone',
@@ -14,6 +16,7 @@ export class CreatePersonPhoneComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
+              private personPhoneService: PersonPhoneService,
               private router: Router) { }
 
   ngOnInit() {
@@ -21,8 +24,8 @@ export class CreatePersonPhoneComponent implements OnInit {
   }
 
   create() {
-    console.log("create");
-    this.initializeCreate();
+    this.personPhoneService.create(this.form.value as CreatePersonPhoneModel)
+      .then(() => this.initializeCreate());
   }
 
   update() {

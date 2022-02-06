@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 using TesteApi.Api.Models;
 using TesteApi.Domain.Contracts;
@@ -19,7 +20,8 @@ namespace TesteApi.Api.Controllers
         [HttpGet, Route("")]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _personPhoneService.Get());
+            var personPhones = await _personPhoneService.Get();
+            return Ok(personPhones.Select(pp => new PersonPhoneModel(pp)));
         }
 
         [HttpGet, Route("{id}")]
@@ -31,7 +33,8 @@ namespace TesteApi.Api.Controllers
         [HttpPost, Route("")]
         public async Task<IActionResult> Create([FromBody] CreatePersonPhoneModel model)
         {
-            return Ok(await _personPhoneService.Create(model.MapTo()));
+            var personPhone = await _personPhoneService.Create(model.MapTo());
+            return CreatedAtAction(nameof(Get), new { id = personPhone.BusinessEntityID }, personPhone);
         }
 
         [HttpPut, Route("{id}")]

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PersonPhoneModel } from 'src/app/models/person-phone.model';
+import { PersonPhoneService } from 'src/app/services/person-phone.service';
 
 @Component({
   selector: 'app-person-phones',
@@ -8,17 +10,11 @@ import { Router } from '@angular/router';
 })
 export class PersonPhonesComponent implements OnInit {
 
-  personPhones: any = [
-    {businessEntityID: 1, phoneNumber: "(99) 9 9999-9999", phoneNumberType: "Pessoal", phoneNumberTypeID: 1, name: "Eduardo"},
-    {businessEntityID: 1, phoneNumber: "(99) 9 9999-9999", phoneNumberType: "Pessoal", phoneNumberTypeID: 1, name: "Eduardo"},
-    {businessEntityID: 1, phoneNumber: "(99) 9 9999-9999", phoneNumberType: "Pessoal", phoneNumberTypeID: 1, name: "Eduardo"},
-    {businessEntityID: 1, phoneNumber: "(99) 9 9999-9999", phoneNumberType: "Pessoal", phoneNumberTypeID: 1, name: "Eduardo"},
-    {businessEntityID: 1, phoneNumber: "(99) 9 9999-9999", phoneNumberType: "Pessoal", phoneNumberTypeID: 1, name: "Eduardo"},
-    {businessEntityID: 1, phoneNumber: "(99) 9 9999-9999", phoneNumberType: "Pessoal", phoneNumberTypeID: 1, name: "Eduardo"},
-  ]
-  constructor(private router: Router) { }
+  personPhones: PersonPhoneModel[];
+  constructor(private router: Router, private personPhoneService: PersonPhoneService) { }
 
   ngOnInit() {
+    this.personPhoneService.getPersonPhones().then(response => this.personPhones = response);
   }
 
   delete(id: number){
