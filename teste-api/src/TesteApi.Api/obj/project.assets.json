@@ -4438,6 +4438,43 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "TesteApi.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/TesteApi.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TesteApi.Domain.dll": {}
+        }
+      },
+      "TesteApi.Infra/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0",
+          "TesteApi.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TesteApi.Infra.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TesteApi.Infra.dll": {}
+        }
+      },
+      "TesteApi.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "TesteApi.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TesteApi.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TesteApi.Service.dll": {}
+        }
       }
     }
   },
@@ -12147,13 +12184,30 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "TesteApi.Domain/1.0.0": {
+      "type": "project",
+      "path": "../TesteApi.Domain/TesteApi.Domain.csproj",
+      "msbuildProject": "../TesteApi.Domain/TesteApi.Domain.csproj"
+    },
+    "TesteApi.Infra/1.0.0": {
+      "type": "project",
+      "path": "../TesteApi.Infra/TesteApi.Infra.csproj",
+      "msbuildProject": "../TesteApi.Infra/TesteApi.Infra.csproj"
+    },
+    "TesteApi.Service/1.0.0": {
+      "type": "project",
+      "path": "../TesteApi.Service/TesteApi.Service.csproj",
+      "msbuildProject": "../TesteApi.Service/TesteApi.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "TesteApi.Infra >= 1.0.0",
+      "TesteApi.Service >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12186,7 +12240,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "targetAlias": "netcoreapp2.2",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\eduardo.mendonca\\Desktop\\st-2\\teste-api\\src\\TesteApi.Infra\\TesteApi.Infra.csproj": {
+              "projectPath": "C:\\Users\\eduardo.mendonca\\Desktop\\st-2\\teste-api\\src\\TesteApi.Infra\\TesteApi.Infra.csproj"
+            },
+            "C:\\Users\\eduardo.mendonca\\Desktop\\st-2\\teste-api\\src\\TesteApi.Service\\TesteApi.Service.csproj": {
+              "projectPath": "C:\\Users\\eduardo.mendonca\\Desktop\\st-2\\teste-api\\src\\TesteApi.Service\\TesteApi.Service.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
