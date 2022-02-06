@@ -45,6 +45,12 @@ namespace TesteApi.Infra.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<PhoneNumberType>> GetPhoneNumberTypes()
+        {
+            return await _context.PhoneNumberTypes
+                .ToListAsync();
+        }
+
         public async Task Update(int id, PersonPhone personPhone)
         {
             personPhone.BusinessEntityID = id;

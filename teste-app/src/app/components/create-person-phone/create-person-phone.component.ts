@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreatePersonPhoneModel } from 'src/app/models/create-person-phone.model';
+import { PhoneNumberTypeModel } from 'src/app/models/phone-number-type.model';
 import { UpdatePersonPhoneModel } from 'src/app/models/update-person-phone.model';
 import { PersonPhoneService } from 'src/app/services/person-phone.service';
 
@@ -13,6 +14,7 @@ import { PersonPhoneService } from 'src/app/services/person-phone.service';
 export class CreatePersonPhoneComponent implements OnInit {
 
   form: any;
+  types: PhoneNumberTypeModel[];
   updateMode = false;
 
   constructor(private fb: FormBuilder,
@@ -22,6 +24,8 @@ export class CreatePersonPhoneComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+    this.personPhoneService.getPhoneNumberTypes()
+    .then(response => this.types = response);
   }
 
   create() {

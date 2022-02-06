@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CreatePersonPhoneModel } from '../models/create-person-phone.model';
 import { PersonPhoneModel } from '../models/person-phone.model';
+import { PhoneNumberTypeModel } from '../models/phone-number-type.model';
 import { UpdatePersonPhoneModel } from '../models/update-person-phone.model';
 
 @Injectable({
@@ -16,6 +17,16 @@ export class PersonPhoneService {
   getPersonPhones(): Promise<PersonPhoneModel[]> {
     return new Promise((resolve, reject) => {
       this.http.get<PersonPhoneModel[]>(this.api_url).subscribe(
+        result => {
+          resolve(result);
+        },
+        error => reject(error))
+    });
+  }
+
+  getPhoneNumberTypes(): Promise<PhoneNumberTypeModel[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get<PhoneNumberTypeModel[]>(`${this.api_url}/types`).subscribe(
         result => {
           resolve(result);
         },

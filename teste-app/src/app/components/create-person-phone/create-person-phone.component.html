@@ -7,8 +7,7 @@
     <div class="form-group col-lg-6">
       <label for="type">Type</label>
       <select class="form-select" id="type" formControlName="phoneNumberTypeID">
-        <option selected value="1">Person</option>
-        <option value="2">Work</option>
+        <option *ngFor="let type of types" value="{{type.phoneNumberTypeID}}">{{type.name}}</option>
       </select>
     </div>
     <div class="div-button">

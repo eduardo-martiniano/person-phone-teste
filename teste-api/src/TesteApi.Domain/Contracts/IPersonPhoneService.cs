@@ -11,5 +11,6 @@ namespace TesteApi.Domain.Contracts
         Task<List<PersonPhone>> Get();
         Task Update(int id, PersonPhone personPhone);
         Task Delete(int id);
+        Task<List<PhoneNumberType>> GetPhoneNumberTypes();
     }
 }

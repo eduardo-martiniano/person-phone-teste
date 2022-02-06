@@ -31,6 +31,13 @@ namespace TesteApi.Api.Controllers
             return Ok(new PersonPhoneModel(personPhone));
         }
 
+        [HttpGet, Route("types")]
+        public async Task<IActionResult> GetPhoneNumberTypes()
+        {
+            var types = await _personPhoneService.GetPhoneNumberTypes();
+            return Ok(types.Select(t => new PhoneNumberTypeModel(t)));
+        }
+
         [HttpPost, Route("")]
         public async Task<IActionResult> Create([FromBody] CreatePersonPhoneModel model)
         {

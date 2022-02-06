@@ -34,6 +34,11 @@ namespace TesteApi.Service.Services
             return await _personPhoneRepository.Get();
         }
 
+        public async Task<List<PhoneNumberType>> GetPhoneNumberTypes()
+        {
+            return await _personPhoneRepository.GetPhoneNumberTypes();
+        }
+
         public async Task Update(int id, PersonPhone personPhone)
         {
             await _personPhoneRepository.Update(id, personPhone);
