@@ -1,8 +1,9 @@
 #stage 1
 FROM node:8.9.4 as node
 WORKDIR /app
-COPY . .
+COPY teste-app/package.json ./
 RUN npm install
+COPY teste-app ./
 RUN npm run build 
 #stage 2
 FROM nginx:alpine

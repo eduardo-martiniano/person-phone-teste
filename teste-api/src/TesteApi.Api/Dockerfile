@@ -5,13 +5,13 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["src/TesteApi.Api/TesteApi.Api.csproj", "src/TesteApi.Api/"]
-COPY ["src/TesteApi.Service/TesteApi.Service.csproj", "src/TesteApi.Service/"]
-COPY ["src/TesteApi.Domain/TesteApi.Domain.csproj", "src/TesteApi.Domain/"]
-COPY ["src/TesteApi.Infra/TesteApi.Infra.csproj", "src/TesteApi.Infra/"]
-RUN dotnet restore "src/TesteApi.Api/TesteApi.Api.csproj"
+COPY ["teste-api/src/TesteApi.Api/TesteApi.Api.csproj", "teste-api/src/TesteApi.Api/"]
+COPY ["teste-api/src/TesteApi.Service/TesteApi.Service.csproj", "teste-api/src/TesteApi.Service/"]
+COPY ["teste-api/src/TesteApi.Domain/TesteApi.Domain.csproj", "teste-api/src/TesteApi.Domain/"]
+COPY ["teste-api/src/TesteApi.Infra/TesteApi.Infra.csproj", "teste-api/src/TesteApi.Infra/"]
+RUN dotnet restore "teste-api/src/TesteApi.Api/TesteApi.Api.csproj"
 COPY . .
-WORKDIR "/src/src/TesteApi.Api"
+WORKDIR "/src/teste-api/src/TesteApi.Api"
 RUN dotnet build "TesteApi.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
