@@ -31,7 +31,7 @@ namespace TesteApi.Api
         {
             services.AddDbContext<Context>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("TesteApi.Infra"));
             });
 
             services.AddScoped<IPersonPhoneRepository, PersonPhoneRepository>();

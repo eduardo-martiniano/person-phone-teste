@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'update',
     component: CreatePersonPhoneComponent
+  },
+  {
+    path: '**',
+    component: PersonPhonesComponent
   }
 ];
 
